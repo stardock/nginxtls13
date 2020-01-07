@@ -11,7 +11,12 @@ Enable TLS1.3 and CHACHA20 support for Nginx
 
 铁人版：  
 
+下载 Nginx 的源码  
 
+cd 
+wget http://nginx.org/download/nginx-1.17.2.tar.gz  
+tar zxf nginx-1.17.2.tar.gz  
+mv nginx-1.17.2 nginx  
 
 
 
