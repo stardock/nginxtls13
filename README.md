@@ -68,7 +68,13 @@ nginx version: nginx/1.17.2
 built by gcc 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC)
 built with OpenSSL 1.1.1  11 Sep 2018
 TLS SNI support enabled
-configure arguments: --user=www --group=www --prefix=/www/server/nginx --with-openssl=../openssl --add-module=/home/www/ngx_devel_kit --add-module=/home/www/lua_nginx_module --add-module=/home/www/ngx_cache_purge --add-module=/home/www/nginx-sticky-module --add-module=/home/www/ngx-pagespeed --with-http_v2_module --with-http_ssl_module --with-http_stub_status_module --with-http_ssl_module --with-http_v2_module --with-http_image_filter_module --with-http_gzip_static_module --with-http_gunzip_module --with-stream --with-stream_ssl_module --with-ipv6 --with-http_sub_module --with-http_flv_module --with-http_addition_module --with-http_realip_module --with-http_mp4_module --with-ld-opt=-Wl,-E --with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers'
+configure arguments: --user=www --group=www --prefix=/www/server/nginx --with-openssl=../openssl --add-module=/home
+/www/ngx_devel_kit --add-module=/home/www/lua_nginx_module --add-module=/home/www/ngx_cache_purge --add-module=/home/www/nginx-
+sticky-module --add-module=/home/www/ngx-pagespeed --with-http_v2_module --with-http_ssl_module --with-http_stub_status_module 
+--with-http_ssl_module --with-http_v2_module --with-http_image_filter_module --with-http_gzip_static_module --with-
+http_gunzip_module --with-stream --with-stream_ssl_module --with-ipv6 --with-http_sub_module --with-http_flv_module --with-
+http_addition_module --with-http_realip_module --with-http_mp4_module --with-ld-opt=-Wl,-E --with-openssl-opt='enable-tls1_3 
+enable-weak-ssl-ciphers'
 ```  
 ldd nginx  
 ```  
