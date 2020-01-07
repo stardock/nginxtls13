@@ -37,32 +37,69 @@ patch -p1 < ../nginx-patch/nginx.patch
 ```  
 nginx补丁  
   添加TLS1.3加密算法选择以及开启CHACHA20支持
-
+```  
 cd
 git clone https://github.com/stardock/nginx-tls13-chacha20-patch
 cd nginx
 patch -p1 < ../nginx_tls13_chacha20_1_17_2.patch 	
-
+```  
 
 编译安装
-
-cd /usr/src/nginx
+```  
 ./configure \
---user=www-data --group=www-data \
---prefix=/usr/local/nginx \
---sbin-path=/usr/sbin/nginx \
---with-compat --with-file-aio --with-threads \
---with-http_v2_module --with-http_v2_hpack_enc \
---with-http_spdy_module --with-http_realip_module \
---with-http_flv_module --with-http_mp4_module \
---with-openssl=../openssl --with-http_ssl_module \
---with-pcre=../pcre-8.42 --with-pcre-jit \
---with-zlib=../zlib --with-http_gzip_static_module \
---add-module=../ngx_brotli \
---with-ld-opt=-ljemalloc
-
+--user=www --group=www --prefix=/www/server/nginx --with-openssl=../openssl \
+--add-module=../nginxtls13/ngx_devel_kit --add-module=../nginxtls13/lua_nginx_module \
+--add-module=../nginxtls13/ngx_cache_purge --add-module=../nginxtls13/nginx-sticky-module \
+--add-module=../nginxtls13/ngx-pagespeed --with-http_v2_module --with-http_ssl_module \
+--with-http_stub_status_module --with-http_ssl_module --with-http_v2_module \
+--with-http_image_filter_module --with-http_gzip_static_module \
+--with-http_gunzip_module --with-stream --with-stream_ssl_module \
+--with-ipv6 --with-http_sub_module --with-http_flv_module \
+--with-http_addition_module --with-http_realip_module \
+--with-http_mp4_module --with-ld-opt=-Wl,-E \
+--with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers'
+```  
 make 
-
+cd objs  
+./nginx -V  
+```  
+[root@vml6xnph objs]# ./nginx -V
+nginx version: nginx/1.17.2
+built by gcc 4.8.5 20150623 (Red Hat 4.8.5-39) (GCC)
+built with OpenSSL 1.1.1  11 Sep 2018
+TLS SNI support enabled
+configure arguments: --user=www --group=www --prefix=/www/server/nginx --with-openssl=../openssl --add-module=/home/www/ngx_devel_kit --add-module=/home/www/lua_nginx_module --add-module=/home/www/ngx_cache_purge --add-module=/home/www/nginx-sticky-module --add-module=/home/www/ngx-pagespeed --with-http_v2_module --with-http_ssl_module --with-http_stub_status_module --with-http_ssl_module --with-http_v2_module --with-http_image_filter_module --with-http_gzip_static_module --with-http_gunzip_module --with-stream --with-stream_ssl_module --with-ipv6 --with-http_sub_module --with-http_flv_module --with-http_addition_module --with-http_realip_module --with-http_mp4_module --with-ld-opt=-Wl,-E --with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers'
+```  
+ldd nginx  
+```  
+[root@vml6xnph objs]# ldd nginx
+        linux-vdso.so.1 =>  (0x00007fff93174000)
+        libdl.so.2 => /lib64/libdl.so.2 (0x00007f8196b30000)
+        libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f8196914000)
+        libcrypt.so.1 => /lib64/libcrypt.so.1 (0x00007f81966dd000)
+        liblua-5.1.so => /lib64/liblua-5.1.so (0x00007f81964af000)
+        libm.so.6 => /lib64/libm.so.6 (0x00007f81961ad000)
+        libstdc++.so.6 => /lib64/libstdc++.so.6 (0x00007f8195ea6000)
+        librt.so.1 => /lib64/librt.so.1 (0x00007f8195c9e000)
+        libuuid.so.1 => /lib64/libuuid.so.1 (0x00007f8195a99000)
+        libpcre.so.1 => /lib64/libpcre.so.1 (0x00007f8195837000)
+        libz.so.1 => /lib64/libz.so.1 (0x00007f8195621000)
+        libgd.so.2 => /lib64/libgd.so.2 (0x00007f81953da000)
+        libgcc_s.so.1 => /lib64/libgcc_s.so.1 (0x00007f81951c4000)
+        libc.so.6 => /lib64/libc.so.6 (0x00007f8194df6000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f8196d34000)
+        libfreebl3.so => /lib64/libfreebl3.so (0x00007f8194bf3000)
+        libXpm.so.4 => /lib64/libXpm.so.4 (0x00007f81949e1000)
+        libX11.so.6 => /lib64/libX11.so.6 (0x00007f81946a3000)
+        libjpeg.so.62 => /lib64/libjpeg.so.62 (0x00007f819444e000)
+        libfontconfig.so.1 => /lib64/libfontconfig.so.1 (0x00007f819420c000)
+        libfreetype.so.6 => /lib64/libfreetype.so.6 (0x00007f8193f4d000)
+        libpng15.so.15 => /lib64/libpng15.so.15 (0x00007f8193d22000)
+        libxcb.so.1 => /lib64/libxcb.so.1 (0x00007f8193afa000)
+        libexpat.so.1 => /lib64/libexpat.so.1 (0x00007f81938d0000)
+        libbz2.so.1 => /lib64/libbz2.so.1 (0x00007f81936c0000)
+        libXau.so.6 => /lib64/libXau.so.6 (0x00007f81934bc000)
+```  
 
 Reference:  
 给Nginx打CHACHA20补丁: https://www.v2ex.com/t/546906  
