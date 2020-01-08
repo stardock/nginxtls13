@@ -124,6 +124,16 @@ ldd nginx
 
 把nginx文件拷贝过去即可  
 
+# 最后的步骤  
+
+* 将网站的ssl配置文件修改如下
+```  
+ssl_protocols TLSv1.2 TLSv1.3;
+ssl_ciphers ECDHE-RSA-CHACHA20-POLY1305:ECDHE-RSA-AES128-GCM-SHA256;
+ssl_ciphers_tls13 TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256;
+ssl_prefer_server_ciphers on;
+ssl_prefer_chacha20 on;
+```  
 
 Reference:  
 给Nginx打CHACHA20补丁: https://www.v2ex.com/t/546906  
