@@ -17,6 +17,7 @@ ssh输入`service nginx stop`
 
 # 铁人版  
 
+cd  
 git clone https://github.com/stardock/nginxtls13  
 
 
@@ -68,9 +69,11 @@ patch -p1 < ../nginx_tls13_chacha20_1_17_2.patch
 --with-http_addition_module --with-http_realip_module \
 --with-http_mp4_module --with-ld-opt=-Wl,-E \
 --with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers'
-```  
-make  
 
+make  
+```  
+
+## 检查结果
 cd objs  
 ./nginx -V  
 ```  
@@ -117,6 +120,9 @@ ldd nginx
         libbz2.so.1 => /lib64/libbz2.so.1 (0x00007f81936c0000)
         libXau.so.6 => /lib64/libXau.so.6 (0x00007f81934bc000)
 ```  
+
+把nginx文件拷贝过去即可  
+
 
 Reference:  
 给Nginx打CHACHA20补丁: https://www.v2ex.com/t/546906  
