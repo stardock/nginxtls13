@@ -3,15 +3,19 @@ Enable TLS1.3 and CHACHA20 support for Nginx
 
 ## 前言  
 
+* 本例使用Centos7, kvm虚拟化  
+* 请使用宝塔面板解决依赖问题：安装宝塔面板 > 快速安装nginx 1.17  
+* 请每次执行一条，遇到错误请停下来排错
 
-懒人版：  
-宝塔快速安装nginx1.17，然后service nginx stop
+
+# 懒人版  
+
+ssh输入`service nginx stop`
 将 /www/server/nginx/sbin 下的nginx文件改个名字
 把本库中的 nginx 贴过去即可.
 
 
-
-铁人版：  
+# 铁人版  
 
 下载 Nginx 的源码  
 
