@@ -3,6 +3,7 @@ Enable TLS1.3 and CHACHA20 support for Nginx
 
 ## 前言  
 
+* 要先完成 openssltls13  
 * 本例使用Centos7, kvm虚拟化  
 * 请使用宝塔面板解决依赖问题：安装宝塔面板 > 快速安装nginx 1.17  
 * 请每次执行一条，遇到错误请停下来排错
