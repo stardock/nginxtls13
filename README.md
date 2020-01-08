@@ -12,7 +12,8 @@ Enable TLS1.3 and CHACHA20 support for Nginx
 
 ssh输入`service nginx stop`  
 将 /www/server/nginx/sbin 下的nginx文件改个名字  
-把本库中的 nginx 贴过去即可.  
+把本库中的 nginx 贴过去  
+`service nginx start`  
 
 
 # 铁人版  
