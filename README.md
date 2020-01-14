@@ -53,8 +53,9 @@ patch -p1 < ../nginx-patch/nginx.patch
 ```  
 cd
 git clone https://github.com/stardock/nginx-tls13-chacha20-patch
+mv nginx-tls13-chacha20-patch nginx-p2
 cd nginx
-patch -p1 < ../nginx_tls13_chacha20_1_17_2.patch 	
+patch -p1 < ../nginx-p2/nginx_tls13_chacha20_1_17_2.patch 	
 ```  
 
 ## 编译
