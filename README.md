@@ -45,7 +45,7 @@ mv nginx-1.17.2 nginx
 ```  
 cd
 git clone https://github.com/stardock/patch nginx-patch
-cd /nginx
+cd nginx
 patch -p1 < ../nginx-patch/nginx.patch
 ```  
  * nginx补丁2  
