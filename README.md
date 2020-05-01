@@ -59,7 +59,7 @@ patch -p1 < ../nginx-p2/nginx_tls13_chacha20_1_17_2.patch
 ```  
 cd  
 cd nginxtls13  
-tar xvzf 
+tar xvzf module.tar.tgz  
 cd  
 
 
