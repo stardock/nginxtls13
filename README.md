@@ -57,6 +57,11 @@ mv nginx-tls13-chacha20-patch nginx-p2
 cd nginx
 patch -p1 < ../nginx-p2/nginx_tls13_chacha20_1_17_2.patch 	
 ```  
+cd  
+cd nginxtls13  
+tar xvzf module.tar.tgz  
+cd  
+
 
 ## 编译
 ```  
@@ -64,17 +69,21 @@ patch -p1 < ../nginx-p2/nginx_tls13_chacha20_1_17_2.patch
 --user=www --group=www --prefix=/www/server/nginx --with-openssl=../openssl \
 --add-module=../nginxtls13/ngx_devel_kit --add-module=../nginxtls13/lua_nginx_module \
 --add-module=../nginxtls13/ngx_cache_purge --add-module=../nginxtls13/nginx-sticky-module \
---add-module=../nginxtls13/ngx-pagespeed --with-http_v2_module --with-http_ssl_module \
---with-http_stub_status_module --with-http_ssl_module --with-http_v2_module \
+--add-module=../nginxtls13/ngx-pagespeed --add-module=../nginxtls13/ngx_brotli \
+--with-http_v2_module --with-http_ssl_module --with-http_stub_status_module \
+--with-compat --with-file-aio --with-threads \
 --with-http_image_filter_module --with-http_gzip_static_module \
---with-http_gunzip_module --with-stream --with-stream_ssl_module \
---with-ipv6 --with-http_sub_module --with-http_flv_module \
+--with-http_gunzip_module --with-stream --with-stream_ssl_preread_module \
+--with-stream_ssl_module --with-http_sub_module --with-http_flv_module \
 --with-http_addition_module --with-http_realip_module \
 --with-http_mp4_module --with-ld-opt=-Wl,-E \
 --with-openssl-opt='enable-tls1_3 enable-weak-ssl-ciphers'
 
-make  
+make
 ```  
+
+Brotli:  
+`https://github.com/google/ngx_brotli`  
 
 ## 检查结果
 cd objs  
