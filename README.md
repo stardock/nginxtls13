@@ -57,6 +57,11 @@ mv nginx-tls13-chacha20-patch nginx-p2
 cd nginx
 patch -p1 < ../nginx-p2/nginx_tls13_chacha20_1_17_2.patch 	
 ```  
+cd  
+cd nginxtls13  
+tar xvzf 
+cd  
+
 
 ## 编译
 ```  
