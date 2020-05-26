@@ -66,7 +66,7 @@ cd
 ## 编译
 ```  
 ./configure \
---user=www --group=www --prefix=/www/server/nginx --with-openssl=../openssl \
+--user=www --group=www --prefix=/www/server/nginx --with-ipv6 --with-openssl=../openssl \
 --add-module=../nginxtls13/ngx_devel_kit --add-module=../nginxtls13/lua_nginx_module \
 --add-module=../nginxtls13/ngx_cache_purge --add-module=../nginxtls13/nginx-sticky-module \
 --add-module=../nginxtls13/ngx-pagespeed --add-module=../nginxtls13/ngx_brotli \
