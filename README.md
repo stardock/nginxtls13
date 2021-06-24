@@ -3,7 +3,15 @@
 https://www.nange.cn/tls13-for-nginx.html
 
 
-
+准备工作 Openssl 1.1.1k  
+```
+wget
+tar -xzf 
+mv 
+cd openssl
+./configure
+make -j5
+```
 
 
 
