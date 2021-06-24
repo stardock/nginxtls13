@@ -25,7 +25,7 @@ cd apps
 下载安装包
 ```  
 cd /root
-wget 
+wget https://github.com/stardock/nginxtls13/raw/v1.19/src.tar.gz
 tar -xzf src.tar.gz
 cd src
 ```
